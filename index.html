@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sistema de tasación automotriz mediante aprendizaje automático"
+    >
+
+    <title>Tasación Automotriz</title>
+
+    <link
+        rel="stylesheet"
+        href="estilos.css"
+    >
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <div class="encabezado-contenido">
+
+            <div>
+                <p class="etiqueta-superior">
+                    APRENDIZAJE ESTADÍSTICO
+                </p>
+
+                <h1>
+                    Sistema de Tasación Automotriz
+                </h1>
+
+                <p class="descripcion">
+                    Estimación del valor de vehículos usados
+                    mediante un modelo de aprendizaje supervisado.
+                </p>
+            </div>
+
+            <div class="estado-modelo">
+                <span class="punto-estado"></span>
+                Modelo Gradient Boosting
+            </div>
+
+        </div>
+    </header>
+
+
+    <main class="contenedor-principal">
+
+        <section class="tarjeta formulario-tarjeta">
+
+            <div class="titulo-seccion">
+                <div>
+                    <span class="numero-seccion">01</span>
+                </div>
+
+                <div>
+                    <h2>Datos del vehículo</h2>
+
+                    <p>
+                        Completa las características para calcular
+                        el valor estimado.
+                    </p>
+                </div>
+            </div>
+
+
+            <form id="formulario-auto">
+
+                <div class="cuadricula-formulario">
+
+                    <div class="grupo-campo">
+                        <label for="marca">
+                            Marca
+                        </label>
+
+                        <select
+                            id="marca"
+                            name="marca"
+                            required
+                        >
+                            <option value="">
+                                Selecciona una marca
+                            </option>
+
+                            <option value="Maruti">Maruti</option>
+                            <option value="Hyundai">Hyundai</option>
+                            <option value="Mahindra">Mahindra</option>
+                            <option value="Tata">Tata</option>
+                            <option value="Honda">Honda</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Toyota">Toyota</option>
+                            <option value="Chevrolet">Chevrolet</option>
+                            <option value="Renault">Renault</option>
+                            <option value="Volkswagen">Volkswagen</option>
+                            <option value="Nissan">Nissan</option>
+                            <option value="Skoda">Skoda</option>
+                            <option value="Fiat">Fiat</option>
+                            <option value="Datsun">Datsun</option>
+                            <option value="BMW">BMW</option>
+
+                            <option value="Mercedes-Benz">
+                                Mercedes-Benz
+                            </option>
+
+                            <option value="Audi">Audi</option>
+
+                            <option value="Land Rover">
+                                Land Rover
+                            </option>
+
+                            <option value="Jeep">Jeep</option>
+                            <option value="Volvo">Volvo</option>
+                            <option value="Mitsubishi">Mitsubishi</option>
+                            <option value="Jaguar">Jaguar</option>
+                            <option value="Kia">Kia</option>
+                            <option value="MG">MG</option>
+                            <option value="Isuzu">Isuzu</option>
+                            <option value="Force">Force</option>
+                            <option value="Ambassador">Ambassador</option>
+
+                            <option value="Ashok Leyland">
+                                Ashok Leyland
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="grupo-campo">
+                        <label for="anio">
+                            Año de fabricación
+                        </label>
+
+                        <input
+                            type="number"
+                            id="anio"
+                            name="anio"
+                            min="1990"
+                            required
+                            placeholder="Ejemplo: 2018"
+                        >
+                    </div>
+
+
+                    <div class="grupo-campo">
+                        <label for="kilometraje">
+                            Kilometraje recorrido
+                        </label>
+
+                        <div class="campo-unidad">
+                            <input
+                                type="number"
+                                id="kilometraje"
+                                name="kilometraje"
+                                min="0"
+                                step="1"
+                                required
+                                placeholder="Ejemplo: 65000"
+                            >
+
+                            <span>km</span>
+                        </div>
+                    </div>
+
+
+                    <div class="grupo-campo">
+                        <label for="combustible">
+                            Tipo de combustible
+                        </label>
+
+                        <select
+                            id="combustible"
+                            name="combustible"
+                            required
+                        >
+                            <option value="">
+                                Selecciona una opción
+                            </option>
+
+                            <option value="Petrol">Gasolina</option>
+                            <option value="Diesel">Diésel</option>
+                            <option value="CNG">Gas natural CNG</option>
+                            <option value="LPG">Gas LPG</option>
+                            <option value="Electric">Eléctrico</option>
+                        </select>
+                    </div>
+
+
+                    <div class="grupo-campo">
+                        <label for="vendedor">
+                            Tipo de vendedor
+                        </label>
+
+                        <select
+                            id="vendedor"
+                            name="vendedor"
+                            required
+                        >
+                            <option value="">
+                                Selecciona una opción
+                            </option>
+
+                            <option value="Individual">
+                                Particular
+                            </option>
+
+                            <option value="Dealer">
+                                Concesionario
+                            </option>
+
+                            <option value="Trustmark Dealer">
+                                Concesionario certificado
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="grupo-campo">
+                        <label for="transmision">
+                            Transmisión
+                        </label>
+
+                        <select
+                            id="transmision"
+                            name="transmision"
+                            required
+                        >
+                            <option value="">
+                                Selecciona una opción
+                            </option>
+
+                            <option value="Manual">
+                                Manual
+                            </option>
+
+                            <option value="Automatic">
+                                Automática
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="grupo-campo campo-completo">
+                        <label for="propietario">
+                            Condición del propietario
+                        </label>
+
+                        <select
+                            id="propietario"
+                            name="propietario"
+                            required
+                        >
+                            <option value="">
+                                Selecciona una opción
+                            </option>
+
+                            <option value="First Owner">
+                                Primer propietario
+                            </option>
+
+                            <option value="Second Owner">
+                                Segundo propietario
+                            </option>
+
+                            <option value="Third Owner">
+                                Tercer propietario
+                            </option>
+
+                            <option value="Fourth & Above Owner">
+                                Cuarto propietario o más
+                            </option>
+
+                            <option value="Test Drive Car">
+                                Vehículo de prueba
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="mensaje-error"
+                    class="mensaje-error"
+                    aria-live="polite"
+                ></div>
+
+
+                <div class="acciones-formulario">
+
+                    <button
+                        type="reset"
+                        id="boton-limpiar"
+                        class="boton boton-secundario"
+                    >
+                        Limpiar formulario
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="boton-calcular"
+                        class="boton boton-principal"
+                    >
+                        <span
+                            id="cargador"
+                            class="cargador oculto"
+                        ></span>
+
+                        <span id="texto-boton">
+                            Calcular valor estimado
+                        </span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <section
+            id="panel-resultado"
+            class="tarjeta resultado-tarjeta oculto"
+        >
+
+            <div class="titulo-seccion">
+                <div>
+                    <span class="numero-seccion">02</span>
+                </div>
+
+                <div>
+                    <h2>Resultado de la predicción</h2>
+
+                    <p>
+                        Valor calculado por el modelo entrenado.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="precio-contenedor">
+
+                <span class="precio-etiqueta">
+                    Precio estimado
+                </span>
+
+                <div class="precio-principal">
+                    <span id="moneda-resultado">INR</span>
+
+                    <strong id="precio-resultado">
+                        0.00
+                    </strong>
+                </div>
+
+                <p>
+                    Estimación expresada en rupias indias,
+                    según la moneda del dataset empleado.
+                </p>
+
+            </div>
+
+
+            <div class="resumen-vehiculo">
+
+                <div class="resumen-elemento">
+                    <span>Marca</span>
+                    <strong id="resumen-marca">-</strong>
+                </div>
+
+                <div class="resumen-elemento">
+                    <span>Año</span>
+                    <strong id="resumen-anio">-</strong>
+                </div>
+
+                <div class="resumen-elemento">
+                    <span>Kilometraje</span>
+                    <strong id="resumen-kilometraje">-</strong>
+                </div>
+
+            </div>
+
+
+            <div class="advertencia">
+                Esta tasación es una estimación estadística.
+                El valor real también puede depender del estado
+                mecánico, documentación, ubicación y condiciones
+                comerciales del vehículo.
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>
+            Proyecto de Aprendizaje Estadístico ·
+            Tasación Automotriz Basada en Datos
+        </p>
+    </footer>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
