@@ -3,7 +3,7 @@
 // ============================================================
 
 const URL_API =
-    "https://api-proyecto-ae-vehiculos-dfe0.onrender.com";
+    "https://api-proyecto-ae-vehiculos.onrender.com/predecir";
 
 
 // ============================================================
